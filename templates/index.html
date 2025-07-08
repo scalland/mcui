@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Memcached UI</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>🧠 Memcached UI</h1>
+
+  <section>
+    <h2>Set Key</h2>
+    <form method="POST" action="/set">
+      <input type="text" name="key" placeholder="Key" required>
+      <input type="text" name="value" placeholder="Value" required>
+      <input type="number" name="ttl" placeholder="TTL (seconds)">
+      <button type="submit">Set</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Get Key</h2>
+    <form method="GET" action="/get">
+      <input type="text" name="key" placeholder="Key" required>
+      <button type="submit">Get</button>
+    </form>
+    {{ if .Value }}
+      <p><strong>Value:</strong> {{ .Value }}</p>
+    {{ end }}
+  </section>
+
+  <section>
+    <h2>Delete Key</h2>
+    <form method="POST" action="/delete">
+      <input type="text" name="key" placeholder="Key" required>
+      <button type="submit">Delete</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Stats</h2>
+    <form method="GET" action="/stats">
+      <button type="submit">Refresh Stats</button>
+    </form>
+    {{ if .Stats }}
+      <pre>{{ .Stats }}</pre>
+    {{ end }}
+  </section>
+</body>
+</html>
+
