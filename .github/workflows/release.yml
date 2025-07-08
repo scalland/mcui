@@ -41,7 +41,7 @@ jobs:
           GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o dist/mcui-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }} main.go
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mcui-${{ matrix.goos }}-${{ matrix.goarch }}
           path: dist/mcui-${{ matrix.goos }}-${{ matrix.goarch }}*
